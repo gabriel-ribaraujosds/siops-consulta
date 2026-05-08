@@ -499,7 +499,12 @@ c1.metric("📋 Registros", f"{len(df):,}")
 c2.metric("🗺️ UFs", n_ufs)
 c3.metric("🏙️ Municípios", n_munis_val if n_munis_val > 0 else "—")
 c4.metric("📌 Subfunções únicas", n_subfuncoes)
-c5.metric("💰 Total Geral (R$)", f"{total_geral:,.0f}")
+def _brl_metric(v: float) -> str:
+    """Formata número como Real brasileiro para métricas: R$ 1.234.567,89"""
+    s = f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+    return f"R$ {s}"
+
+c5.metric("💰 Total Geral (R$)", _brl_metric(total_geral))
 
 st.markdown("<div style='margin-bottom:1.2rem'></div>", unsafe_allow_html=True)
 st.divider()
@@ -526,18 +531,29 @@ else:
         st.caption(f"🔢 {len(display_df):,} linhas no total")
 
 # ── Data table ────────────────────────────────────────────────────────────────
-money_cols = {
-    col: st.column_config.NumberColumn(col, format="R$ %.2f")
-    for col in valor_cols
-    if col in display_df.columns
-}
+def _fmt_brl(x):
+    """Formata valor como R$ 1.234.567,89 (padrão brasileiro)."""
+    if pd.isna(x):
+        return ""
+    try:
+        s = f"{float(x):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+        return f"R$ {s}"
+    except Exception:
+        return str(x)
+
+money_cols_present = [c for c in valor_cols if c in display_df.columns]
+
+styled_df = display_df.style.format(
+    {col: _fmt_brl for col in money_cols_present},
+    na_rep=""
+)
+
 st.dataframe(
-    display_df,
+    styled_df,
     use_container_width=True,
     height=460,
     hide_index=True,
     column_config={
-        **money_cols,
         "Ano":       st.column_config.TextColumn("Ano"),
         "Período":   st.column_config.TextColumn("Período"),
         "UF":        st.column_config.TextColumn("UF"),
