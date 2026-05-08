@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" width="300" height="100">
+  <!-- Bar chart — three ascending green bars -->
+  <rect x="6"  y="58" width="22" height="30" rx="3" fill="#81C784"/>
+  <rect x="32" y="40" width="22" height="48" rx="3" fill="#4CAF50"/>
+  <rect x="58" y="22" width="22" height="66" rx="3" fill="#388E3C"/>
+
+  <!-- Magnifying glass shadow/depth -->
+  <circle cx="62" cy="50" r="31" fill="#0D47A1" opacity="0.25"/>
+
+  <!-- Magnifying glass main circle -->
+  <circle cx="60" cy="48" r="30" fill="#1565C0"/>
+
+  <!-- Inner lighter circle for depth -->
+  <circle cx="60" cy="48" r="23" fill="#1976D2"/>
+
+  <!-- Medical cross (white) -->
+  <rect x="51" y="44" width="18" height="8"  rx="2" fill="white"/>
+  <rect x="56" y="39" width="8"  height="18" rx="2" fill="white"/>
+
+  <!-- Magnifying glass handle -->
+  <line x1="82" y1="70" x2="97" y2="86" stroke="#0D47A1" stroke-width="8" stroke-linecap="round"/>
+  <line x1="82" y1="70" x2="97" y2="86" stroke="#1565C0" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- SIOPS wordmark -->
+  <text x="108" y="58"
+        font-family="'Arial Black', 'Arial Bold', Arial, sans-serif"
+        font-size="40" font-weight="900"
+        fill="#1A2F5A" letter-spacing="-1">SIOPS</text>
+
+  <!-- Subtitle line 1 -->
+  <text x="110" y="72"
+        font-family="Arial, sans-serif"
+        font-size="10" fill="#1565C0">Sistema de Informações sobre</text>
+
+  <!-- Subtitle line 2 -->
+  <text x="110" y="85"
+        font-family="Arial, sans-serif"
+        font-size="10" fill="#1565C0">Orçamentos Públicos em Saúde</text>
+</svg>
