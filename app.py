@@ -440,6 +440,7 @@ if fetch_clicked:
     df = enrich_df(df, estados, anos_periodos, st.session_state.get("muni_cache", {}))
     st.session_state["df"] = df
     st.session_state["errors"] = errors
+    st.session_state["nivel"] = nivel
 
 
 # ── Main area — results ───────────────────────────────────────────────────────
@@ -519,6 +520,8 @@ with col_view:
         label_visibility="collapsed",
     )
 
+is_estadual = st.session_state.get("nivel", "Estadual") == "Estadual"
+
 if view == "Consolidado por Subfunção":
     group_cols = [c for c in ["UF", "Município", "Ano", "Período", "Subfunção"] if c in df.columns]
     agg_cols = {c: "sum" for c in valor_cols if c in df.columns}
@@ -529,6 +532,10 @@ else:
     display_df = df
     with col_info:
         st.caption(f"🔢 {len(display_df):,} linhas no total")
+
+# Remove coluna Município em consultas estaduais
+if is_estadual and "Município" in display_df.columns:
+    display_df = display_df.drop(columns=["Município"])
 
 # ── Data table ────────────────────────────────────────────────────────────────
 def _fmt_brl(x):
@@ -551,7 +558,7 @@ styled_df = display_df.style.format(
 st.dataframe(
     styled_df,
     use_container_width=True,
-    height=460,
+    height=620,
     hide_index=True,
     column_config={
         "Ano":       st.column_config.TextColumn("Ano"),
