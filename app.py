@@ -87,14 +87,14 @@ st.markdown(
 
     /* ── Sidebar ─────────────────────────────────────────── */
     [data-testid="stSidebar"] {
-        background: linear-gradient(175deg, #00897B 0%, #00695C 40%, #00332C 100%);
+        background: linear-gradient(175deg, #2D3748 0%, #1A202C 50%, #0D1117 100%);
         border-right: none;
     }
     [data-testid="stSidebar"] * { color: #E8F1FF !important; }
     [data-testid="stSidebar"] .stMarkdown p,
     [data-testid="stSidebar"] label { color: #CBD8F0 !important; }
     [data-testid="stSidebar"] [data-testid="stSelectboxLabel"],
-    [data-testid="stSidebar"] .stMultiSelect label { color: #B2DFDB !important; font-weight: 600 !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.05em; }
+    [data-testid="stSidebar"] .stMultiSelect label { color: #A0AEC0 !important; font-weight: 600 !important; font-size: 0.8rem !important; text-transform: uppercase; letter-spacing: 0.05em; }
 
     /* Sidebar inputs */
     [data-testid="stSidebar"] [data-baseweb="select"] > div {
@@ -139,9 +139,9 @@ st.markdown(
     [data-testid="stSidebar"] [data-testid="stBaseButton-primary"] p,
     [data-testid="stSidebar"] [data-testid="stButton"] button:first-child,
     [data-testid="stSidebar"] [data-testid="stButton"] button:first-child p {
-        background-color: #004D40 !important;
+        background-color: #1565C0 !important;
         color: #FFFFFF !important;
-        border: 2px solid rgba(255,255,255,0.55) !important;
+        border: 2px solid rgba(255,255,255,0.35) !important;
         font-weight: 700 !important;
         font-size: 0.95rem !important;
         border-radius: 8px !important;
@@ -241,7 +241,7 @@ with st.sidebar:
         f"""
         <div style="padding: 0.8rem 0.5rem 0.4rem 0.5rem; text-align:center;">
             {_logo_html()}
-            <div style="font-size:0.72rem; color:#80CBC4; margin-top:6px; line-height:1.5; letter-spacing:0.02em;">
+            <div style="font-size:0.72rem; color:#90CDF4; margin-top:6px; line-height:1.5; letter-spacing:0.02em;">
                 Despesas por Subfunção
             </div>
         </div>
@@ -384,7 +384,7 @@ with st.sidebar:
                 '[data-testid="stSidebar"] button[kind="primary"]'
             );
             if (btn) {
-                btn.style.setProperty('background-color', '#004D40', 'important');
+                btn.style.setProperty('background-color', '#1565C0', 'important');
                 btn.style.setProperty('color', '#FFFFFF', 'important');
                 btn.style.setProperty('border', '2px solid rgba(255,255,255,0.5)', 'important');
                 btn.style.setProperty('font-weight', '700', 'important');
